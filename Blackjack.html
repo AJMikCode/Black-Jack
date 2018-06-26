@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Black jack</title>
+
+ <h1>BlackJack</h1>
+  <link rel="stylesheet" href="Blackjackcards.css">
+  <script>
+var playerAmount = 5000;
+var playerAmountBet = 0;
+var betAmnt = 500;
+var betAmnt2 = 100;
+var betAmnt3 = 50;
+var betAmnt4 = 25;
+var betAmnt5 = 5;
+	  
+function cardNumberGen() {
+    var card = Math.floor((Math.random() * 13) + 1);
+    return card; 
+}	
+	  
+function dealPlayer() {
+	 var card1, card2; 
+	card1 = cardNumberGen();
+	card2 = cardNumberGen();
+    document.getElementById('myHand').innerHTML = card1 + ' ' + card2;
+}
+	  
+function betMoney(betamount) {
+	checkWallet();
+	document.getElementById("playerAmount").innerHTML = playerAmount -= betamount;
+	document.getElementById("amntBet").innerHTML = playerAmountBet += betamount;
+	 }
+	  debugger;
+function checkWallet() {
+	if(playerAmount <= 500) {
+		document.getElementById("betAmnt").disabled = true;			
+	}
+	
+	if(playerAmount <= 100) {
+		document.getElementById("betAmnt2").disabled = true;			
+	}
+	
+	if(playerAmount <= 50) {
+		document.getElementById("betAmnt3").disabled = true;			
+	}
+	
+	if(playerAmount <= 25) {
+		document.getElementById("betAmnt4").disabled = true;			
+	}
+	
+	if(playerAmount <= 5) {
+		var x = document.getElementById("betAmnt5").disabled = true;
+						}	
+}
+</script>
+</head>
+<body>
+<button id="betAmnt" onClick="betMoney(500)">Bet 500</button>
+<button id="betAmnt2" onClick="betMoney(100)">Bet 100</button>
+<button id="betAmnt3" onClick="betMoney(50)">Bet 50</button>
+<button id="betAmnt4" onClick="betMoney(25)">Bet 25</button>
+<button id="betAmnt5" onClick="betMoney(5)">Bet 5</button>
+<button id="test" onClick="(function() { document.getElementById('myHand').innerHTML = 140;})()">Test</button>
+ <button onClick="dealPlayer()">Deal Cards</button>
+<p>Money you have</p>
+<p id="playerAmount">5000</p>
+<p>Money you Bet</p>
+<p id="amntBet">0</p>
+<p id="myHand">Cards</p>
+ 
+
+</body>
+</html>
